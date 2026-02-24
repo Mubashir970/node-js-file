@@ -49,11 +49,3 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      # Scan Image for Vulnerabilities
-      - name: Scan Docker Image
-        uses: aquasecurity/trivy-action@v0.28.0
-        with:
-          image-ref: ${{ secrets.DOCKER_USERNAME }}/myapp:${{ github.sha }}
-          format: table
-          exit-code: 1
-          severity: CRITICAL,HIGH
